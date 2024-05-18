@@ -51,6 +51,7 @@
             IDInput.Name = "IDInput";
             IDInput.Size = new Size(1008, 141);
             IDInput.TabIndex = 3;
+            IDInput.TextChanged += IDInput_TextChanged;
             // 
             // ID_OK
             // 
@@ -61,6 +62,7 @@
             ID_OK.TabIndex = 4;
             ID_OK.Text = "OK";
             ID_OK.UseVisualStyleBackColor = true;
+            ID_OK.Click += ID_OK_Click;
             // 
             // userIdWindow
             // 

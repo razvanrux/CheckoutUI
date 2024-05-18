@@ -62,6 +62,7 @@
             Card_OK.TabIndex = 4;
             Card_OK.Text = "OK";
             Card_OK.UseVisualStyleBackColor = true;
+            Card_OK.Click += Card_OK_Click;
             // 
             // cardWindow
             // 

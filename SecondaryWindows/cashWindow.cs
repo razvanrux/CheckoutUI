@@ -12,11 +12,15 @@ namespace CheckoutUI
 {
     public partial class cashWindow : Form
     {
+        public decimal PaymentAmount { get; private set; }
+
         public cashWindow()
         {
             InitializeComponent();
             this.cashInput.KeyPress += new KeyPressEventHandler(this.cashInput_KeyPress);
+            this.Cash_OK.Click += new EventHandler(this.Cash_OK_Click);
         }
+
         private void cashInput_KeyPress(object sender, KeyPressEventArgs e)
         {
             TextBox textBox = sender as TextBox;
@@ -59,9 +63,25 @@ namespace CheckoutUI
             }
         }
 
+        private void Cash_OK_Click(object sender, EventArgs e)
+        {
+            if (decimal.TryParse(cashInput.Text, out decimal amount))
+            {
+                PaymentAmount = amount;
+                MessageBox.Show($"Ai platit {amount} RON");
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Introduceti o suma valida.");
+            }
+        }
+
         private void cashWindow_Load(object sender, EventArgs e)
         {
 
         }
     }
+
 }

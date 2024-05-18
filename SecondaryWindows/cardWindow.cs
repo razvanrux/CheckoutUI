@@ -12,11 +12,18 @@ namespace CheckoutUI
 {
     public partial class cardWindow : Form
     {
+        public decimal PaymentAmount { get; private set; }
+
         public cardWindow()
         {
             InitializeComponent();
+            this.Card_OK.Click -= Card_OK_Click;
+            this.cardInput.KeyPress -= cardInput_KeyPress;
+
             this.cardInput.KeyPress += new KeyPressEventHandler(this.cardInput_KeyPress);
+            this.Card_OK.Click += new EventHandler(this.Card_OK_Click);
         }
+
         private void cardInput_KeyPress(object sender, KeyPressEventArgs e)
         {
             TextBox textBox = sender as TextBox;
@@ -58,9 +65,26 @@ namespace CheckoutUI
                 }
             }
         }
+
+        private void Card_OK_Click(object sender, EventArgs e)
+        {
+            if (decimal.TryParse(cardInput.Text, out decimal amount))
+            {
+                PaymentAmount = amount;
+                MessageBox.Show($"Ai platit {amount} RON");
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Introduceti o suma valida.");
+            }
+        }
+
         private void cardWindow_Load(object sender, EventArgs e)
         {
 
         }
     }
+
 }
