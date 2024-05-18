@@ -46,7 +46,13 @@
             button1 = new Button();
             buttonCARD = new Button();
             UserPanel = new Panel();
+            nameLabel = new Label();
+            welcomeLabel = new Label();
             GuestText = new Label();
+            discountBox = new TextBox();
+            totalBox = new TextBox();
+            itemBox = new TextBox();
+            addButton = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProducts).BeginInit();
             keypadPanel.SuspendLayout();
             UserPanel.SuspendLayout();
@@ -55,10 +61,11 @@
             // dataGridViewProducts
             // 
             dataGridViewProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewProducts.Location = new Point(10, 10);
+            dataGridViewProducts.Location = new Point(12, 10);
             dataGridViewProducts.Name = "dataGridViewProducts";
             dataGridViewProducts.Size = new Size(993, 946);
             dataGridViewProducts.TabIndex = 0;
+            dataGridViewProducts.CellContentClick += dataGridViewProducts_CellContentClick;
             // 
             // labelReduceri
             // 
@@ -75,7 +82,7 @@
             // 
             labelTotal.AutoSize = true;
             labelTotal.Font = new Font("Segoe UI", 45F);
-            labelTotal.Location = new Point(543, 973);
+            labelTotal.Location = new Point(546, 973);
             labelTotal.Margin = new Padding(4, 0, 4, 0);
             labelTotal.Name = "labelTotal";
             labelTotal.Size = new Size(161, 81);
@@ -122,7 +129,7 @@
             buttonCash.Text = "Plata CASH";
             buttonCash.TextAlign = ContentAlignment.BottomCenter;
             buttonCash.UseVisualStyleBackColor = true;
-            buttonCash.Click += buttonCash_Click;
+            buttonCash.Click += buttonCASH_Click;
             // 
             // keypadPanel
             // 
@@ -321,12 +328,37 @@
             // 
             UserPanel.BackColor = SystemColors.Control;
             UserPanel.BorderStyle = BorderStyle.FixedSingle;
+            UserPanel.Controls.Add(nameLabel);
+            UserPanel.Controls.Add(welcomeLabel);
             UserPanel.Controls.Add(GuestText);
             UserPanel.Location = new Point(1379, 10);
             UserPanel.Margin = new Padding(4, 3, 4, 3);
             UserPanel.Name = "UserPanel";
             UserPanel.Size = new Size(528, 332);
             UserPanel.TabIndex = 12;
+            // 
+            // nameLabel
+            // 
+            nameLabel.AutoSize = true;
+            nameLabel.Font = new Font("Segoe UI", 55F);
+            nameLabel.Location = new Point(45, 129);
+            nameLabel.Margin = new Padding(4, 0, 4, 0);
+            nameLabel.Name = "nameLabel";
+            nameLabel.Size = new Size(0, 99);
+            nameLabel.TabIndex = 14;
+            nameLabel.Click += nameLabel_Click;
+            // 
+            // welcomeLabel
+            // 
+            welcomeLabel.AutoSize = true;
+            welcomeLabel.Font = new Font("Segoe UI", 55F);
+            welcomeLabel.Location = new Point(45, 0);
+            welcomeLabel.Margin = new Padding(4, 0, 4, 0);
+            welcomeLabel.Name = "welcomeLabel";
+            welcomeLabel.Size = new Size(454, 99);
+            welcomeLabel.TabIndex = 13;
+            welcomeLabel.Text = "Bine ai venit,";
+            welcomeLabel.Click += welcomeLabel_Click;
             // 
             // GuestText
             // 
@@ -339,6 +371,46 @@
             GuestText.TabIndex = 12;
             GuestText.Text = "Guest";
             // 
+            // discountBox
+            // 
+            discountBox.Font = new Font("Segoe UI", 45F);
+            discountBox.Location = new Point(284, 970);
+            discountBox.Name = "discountBox";
+            discountBox.Size = new Size(255, 87);
+            discountBox.TabIndex = 13;
+            discountBox.TextChanged += discountBox_TextChanged;
+            // 
+            // totalBox
+            // 
+            totalBox.Font = new Font("Segoe UI", 45F);
+            totalBox.Location = new Point(714, 970);
+            totalBox.Name = "totalBox";
+            totalBox.Size = new Size(289, 87);
+            totalBox.TabIndex = 14;
+            totalBox.TextChanged += totalBox_TextChanged;
+            // 
+            // itemBox
+            // 
+            itemBox.Font = new Font("Segoe UI", 40F);
+            itemBox.Location = new Point(12, 878);
+            itemBox.Name = "itemBox";
+            itemBox.Size = new Size(855, 78);
+            itemBox.TabIndex = 15;
+            itemBox.TextChanged += itemBox_TextChanged;
+            // 
+            // addButton
+            // 
+            addButton.BackgroundImageLayout = ImageLayout.None;
+            addButton.Font = new Font("Segoe UI", 20F);
+            addButton.ImageAlign = ContentAlignment.BottomCenter;
+            addButton.Location = new Point(866, 878);
+            addButton.Name = "addButton";
+            addButton.Size = new Size(139, 78);
+            addButton.TabIndex = 16;
+            addButton.Text = "Adauga";
+            addButton.UseVisualStyleBackColor = true;
+            addButton.Click += addButton_Click;
+            // 
             // mainUI
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -346,6 +418,10 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1920, 1080);
+            Controls.Add(addButton);
+            Controls.Add(itemBox);
+            Controls.Add(totalBox);
+            Controls.Add(discountBox);
             Controls.Add(UserPanel);
             Controls.Add(buttonCARD);
             Controls.Add(dataGridViewProducts);
@@ -383,7 +459,13 @@
         private Button buttonDEL;
         private Button button7;
         private Panel UserPanel;
-        private Label GuestText;
+        public Label GuestText;
         private TextBox piecesBox;
+        private TextBox discountBox;
+        private TextBox totalBox;
+        private TextBox itemBox;
+        private Button addButton;
+        public Label welcomeLabel;
+        public Label nameLabel;
     }
 }

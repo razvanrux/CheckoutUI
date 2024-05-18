@@ -1,0 +1,1 @@
+start "" "C:\Users\razvanrux\Documents\IP\CheckoutUI\bin\Debug\net8.0-windows\CheckoutUI.exe"
